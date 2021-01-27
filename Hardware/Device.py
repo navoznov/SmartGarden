@@ -1,4 +1,5 @@
 class Device:
-    def __init__(self, id:str, type:str):
+    def __init__(self, id:str, device_type:str, description=None:str):
         self.id = id
-        self.type = type
+        self.type = device_type
+        self.description = description
