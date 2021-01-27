@@ -1,0 +1,16 @@
+{
+    "devices": [
+        {
+            "id": "temperature1",
+            "type": "temperature",
+            "pin": "0",
+            "publishToMqttTopic": "garden/gardenhouse/inside/temperature"
+        },
+        {
+            "id": "valve1",
+            "type": "valve",
+            "pin": "1",
+            "publishToMqttTopic": "gardenhouse/inside/temperature"
+        }
+    ]
+}
