@@ -4,11 +4,11 @@ from Hardware.DeviceType import DeviceType
 
 class Sensor(Device):
     def __init__(self, id, pin, mqtt_topic, name=None, description=None):
-        self.__pin = onionGpio.OnionGpio(pin)
-        self.__state = state
-        self.__mqtt_topic = mqtt_topic
+        self.pin = onionGpio.OnionGpio(pin)
+        self.state = state
+        self.mqtt_topic = mqtt_topic
 
-        super().__init__(id, DeviceType.SENSOR_TYPE,  name, description)
+        super().__init__(id, DeviceType.SENSOR,  name, description)
 
     def read_value(self) -> str:
-        return self.__pin.getValue()
+        return self.pin.getValue()

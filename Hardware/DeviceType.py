@@ -1,9 +1,9 @@
 class DeviceType:
     # температурный датчик
-    TEMPERATURE_TYPE = "temperature"
+    TEMPERATURE = "temperature"
     # клапан
-    VALVE_TYPE = "valve"
+    VALVE = "valve"
     # реле
-    RELAY_TYPE = "relay"
+    RELAY = "relay"
     # сенсор/датчик
-    SENSOR_TYPE = "sensor"
+    SENSOR = "sensor"

@@ -8,12 +8,20 @@ class DeviceBuilder:
 
 
     def build_device(self, device_config):
+        id = device_config.get("id", None)
         device_type = device_config.get("type", None)
-        if device_type == DeviceType.TEMPERATURE_TYPE:
+        name = device_config.get("name", None)
+        description = device_config.get("description", None)
+        pin = device_config.get("pin", None)
+        mqtt_topic = device_config.get("mqttTopic", None)
+
+        if device_type == DeviceType.TEMPERATURE:
             return new TemperatureSensor()
-        if device_type == DeviceType.VALVE_TYPE:
-            return new Valve()
-        if device_type == DeviceType.RELAY_TYPE:
-            return new Relay()
-        if device_type == DeviceType.SENSOR_TYPE:
-            return new Sensor()
+        if device_type == DeviceType.VALVE:
+            return new Valve(id, pin, state, mqtt_topic, name, description)
+        if device_type == DeviceType.RELAY:
+            relay_type = device_config.get("relay_type", None)
+            state = device_config.get("state", None)
+            return new Relay(id, pin, mqtt_topic, name, description, relay_type, state)
+        if device_type == DeviceType.SENSOR:
+            return new Sensor(id, pin, mqtt_topic, name, description)

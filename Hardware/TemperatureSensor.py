@@ -1,7 +1,9 @@
 from Hardware.OneWire import OneWire
+from Hardware.DeviceType import DeviceType
 
 
-class TemperatureSensor:
+class TemperatureSensor(Device):
+    #TODO: переделать конструктор
     def __init__(self, interface, args):
         self.supportedInterfaces = ["oneWire"]
         self.interface = interface
