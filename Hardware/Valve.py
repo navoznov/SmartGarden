@@ -3,6 +3,11 @@ from Hardware.Device import Device
 from Hardware.DeviceType import DeviceType
 
 class Valve(Device):
+    # состояние крана "полностью открыт"
+    OPEN_STATE = "OPEN"
+    # состояние крана "полностью закрыт"
+    CLOSED_STATE = "CLOSED"
+
     def __init__(self, id, pin, state, mqtt_topic, name=None, description=None):
         self.pin = onionGpio.OnionGpio(pin)
         self.state = state
@@ -10,11 +15,11 @@ class Valve(Device):
         super().__init__(id, DeviceType.VALVE, name, description)
 
     def open(self):
-        self.state = true
+        self.state = Valve.OPEN_STATE
         # TODO: установить пин в 1
         # TODO: уведомление об открытии
 
     def close(self):
-        self.state = false
+        self.state = Valve.CLOSED_STATE
         # TODO: установить пин в 0
         # TODO: уведомление о закрытии
