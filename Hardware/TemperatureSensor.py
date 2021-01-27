@@ -3,6 +3,8 @@ from Hardware.DeviceType import DeviceType
 
 
 class TemperatureSensor(Device):
+    """Температурный датчик"""
+
     #TODO: переделать конструктор
     def __init__(self, interface, args):
         self.supportedInterfaces = ["oneWire"]

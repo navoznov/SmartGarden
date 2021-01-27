@@ -4,6 +4,8 @@ from Hardware.DeviceType import DeviceType
 
 
 class Relay(Device):
+    """реле"""
+
     # тип реле "нормально открытое"
     NORMALLY_OPEN_TYPE = "NORMALLY_OPEN"
     # тип реле "нормально закрытое"

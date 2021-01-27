@@ -3,6 +3,8 @@ from Hardware.Device import Device
 from Hardware.DeviceType import DeviceType
 
 class Sensor(Device):
+    """Просто датчик. Абстрактный датчик на одном пине"""
+
     def __init__(self, id, pin, mqtt_topic, name=None, description=None):
         self.pin = onionGpio.OnionGpio(pin)
         self.state = state

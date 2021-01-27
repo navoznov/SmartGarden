@@ -3,6 +3,8 @@ from Hardware.Device import Device
 from Hardware.DeviceType import DeviceType
 
 class Valve(Device):
+    """Кран"""
+
     # состояние крана "полностью открыт"
     OPEN_STATE = "OPEN"
     # состояние крана "полностью закрыт"
