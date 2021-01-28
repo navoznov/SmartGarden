@@ -14,7 +14,6 @@ class LinearActuator(Device):
     # дефолтное состояние актуатора
     DEFAULT_STATE = OPEN_STATE
 
-    FULL_OPENED
     # дефолтное максимальное время полного открыти (или закрытия) актуатора (в секундах)
     DEFAULT_OPEN_CLOSE_TIMEOUT_IN_SEC = 10
 
