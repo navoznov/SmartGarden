@@ -7,3 +7,5 @@ class DeviceType:
     RELAY = "relay"
     # сенсор/датчик
     SENSOR = "sensor"
+    # линейный актуатор
+    LINEAR_ACTUATOR = "linear_actuator"
