@@ -4,13 +4,25 @@
             "id": "temperature1",
             "type": "temperature",
             "pin": "0",
-            "publishToMqttTopic": "garden/gardenhouse/inside/temperature"
+            "mqttTopic": "garden/gardenhouse/inside/temperature"
         },
         {
             "id": "valve1",
             "type": "valve",
             "pin": "1",
-            "publishToMqttTopic": "gardenhouse/inside/temperature"
+            "mqttTopic": "gardenhouse/inside/temperature"
+        },
+        {
+            "id": "actuator1",
+            "type": "linear_actuator",
+            "pin": "2",
+            "mqttTopic": "gardenhouse/actuators/front"
+        },
+        {
+            "id": "actuator2",
+            "type": "linear_actuator",
+            "pin": "3",
+            "mqttTopic": "gardenhouse/actuators/back"
         }
     ]
 }
