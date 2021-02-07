@@ -1,8 +1,15 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+from OptionsParser import OptionsParser
 from GardenConfigParser import GardenConfigParser
 from DeviceBuilder import DeviceBuilder
 
 
 def main():
+    # получаем настройки приложения
+    options = OptionsParser.parse()
+
     # получаем конфиг
     config_json_str = open("gardenConfig.json").read()
     config = GardenConfigParser.parse(config_json_str)
