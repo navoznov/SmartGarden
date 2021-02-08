@@ -1,14 +1,15 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from Options import Options
-from OptionsParser import OptionsParser
-from GardenConfigParser import GardenConfigParser
-from DeviceBuilder import DeviceBuilder
+from options import Options
+from optionsParser import OptionsParser
+from telegram.telegramBot import TelegramBot
+from gardenConfigParser import GardenConfigParser
+from deviceBuilder import DeviceBuilder
 
 
 def main():
-    # получаем настройки приложения
+    # # получаем настройки приложения
     options = OptionsParser.parse()
 
     # получаем конфиг

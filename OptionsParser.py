@@ -3,7 +3,7 @@
 
 import sys
 import getopt
-from Options import Options
+from options import Options
 
 
 class OptionsParser:

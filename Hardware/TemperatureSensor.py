@@ -1,5 +1,5 @@
-from Hardware.OneWire import OneWire
-from Hardware.DeviceType import DeviceType
+from hardware.oneWire import OneWire
+from hardware.deviceType import DeviceType
 
 
 class TemperatureSensor(Device):

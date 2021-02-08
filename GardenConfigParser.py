@@ -1,4 +1,4 @@
-from Garden import Garden
+from garden import Garden
 import json
 
 class GardenConfigParser:

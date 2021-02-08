@@ -2,8 +2,8 @@
 # -*- coding: utf-8 -*-
 
 import onionGpio
-from Hardware.Device import Device
-from Hardware.DeviceType import DeviceType
+from hardware.device import Device
+from hardware.deviceType import DeviceType
 
 class Valve(Device):
     """Кран"""
