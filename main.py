@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+from Options import Options
 from OptionsParser import OptionsParser
 from GardenConfigParser import GardenConfigParser
 from DeviceBuilder import DeviceBuilder
@@ -18,14 +19,13 @@ def main():
     device_configs = config.get("devices", [])
 
     # составляем список устройств
-    device_builder = new DeviceBuilder()
+    device_builder = DeviceBuilder()
     # REFACTORING: переписать цилк в одну строку
     # devices = [build_device(x) for x in device_configs]
     devices = []
     for device_config in device_configs:
         device = device_builder.build_device(device_config)
         devices.append(device)
-
 
 if __name__ == '__main__':
     main()

@@ -1,6 +1,9 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
 import sys
 import getopt
-import Options
+from Options import Options
 
 
 class OptionsParser:
@@ -10,12 +13,12 @@ class OptionsParser:
             longopts = ["bot-id=", "bot-key=", "mqtt-server=", "db-filename="]
             argv = sys.argv[1:]
             opts, args = getopt.getopt(argv, "i:k:u:t:d", longopts)
-            d = {}
+            args = {}
             for a, v in opts:
                 aa = a.replace('--', '')
-                d[aa] = v
+                args[aa] = v
         except getopt.GetoptError as e:
             sys.exit(2)
 
-        options = new Options(d["bot-id"], d["bot-key"], d["mqtt-server"], d["db-filename"])
+        options = Options(args["bot-id"], args["bot-key"], args["mqtt-server"], args["db-filename"])
         return options
