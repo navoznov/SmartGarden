@@ -1,3 +1,6 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
 import onionGpio
 from Hardware.Device import Device
 from Hardware.DeviceType import DeviceType

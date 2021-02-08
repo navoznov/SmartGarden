@@ -1,9 +1,12 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
 import Hardware.TemperatureSensor import TemperatureSensor
-import Hardware.Valve import Valve
-import Hardware.Relay import Relay
-import Hardware.Sensor import Sensor
-import Hardware.LinearActuator import LinearActuator
-import Hardware.DeviceType import DeviceType
+from Hardware.Valve import Valve
+from Hardware.Relay import Relay
+from Hardware.Sensor import Sensor
+from Hardware.LinearActuator import LinearActuator
+from Hardware.DeviceType import DeviceType
 
 
 class DeviceBuilder:
