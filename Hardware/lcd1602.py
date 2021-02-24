@@ -1,5 +1,5 @@
 from hardware.device import Device
-from hardware.deviceType import DeviceType
+import hardware.deviceType as deviceType
 
 class Lcd1602(Device):
     """LCD-экран 16х2"""
@@ -9,7 +9,7 @@ class Lcd1602(Device):
         self.pin = pin
         self.state = state
         self.mqtt_topic = mqtt_topic
-        super().__init__(id, DeviceType.LCD1602, name, description)
+        super().__init__(id, deviceType.LCD1602, name, description)
 
     def print(text):
         lines = text.split('\n')

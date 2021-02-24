@@ -3,7 +3,7 @@
 
 # import onionGpio
 from hardware.device import Device
-from hardware.deviceType import DeviceType
+import hardware.deviceType as deviceType
 
 class Valve(Device):
     """Кран"""
@@ -18,7 +18,7 @@ class Valve(Device):
         self.state = state
         self.mqtt_topic = mqtt_topic
 
-        super().__init__(id, DeviceType.VALVE, name, description)
+        super().__init__(id, deviceType.VALVE, name, description)
 
     def open(self):
         self.state = Valve.OPEN_STATE

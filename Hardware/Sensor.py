@@ -1,6 +1,6 @@
 import onionGpio
 from hardware.device import Device
-from hardware.deviceType import DeviceType
+import hardware.deviceType as deviceType
 
 class Sensor(Device):
     """Просто датчик. Абстрактный датчик на одном пине"""
@@ -10,7 +10,7 @@ class Sensor(Device):
         self.state = state
         self.mqtt_topic = mqtt_topic
 
-        super().__init__(id, DeviceType.SENSOR,  name, description)
+        super().__init__(id, deviceType.SENSOR,  name, description)
 
     def read_value(self) -> str:
         pass
