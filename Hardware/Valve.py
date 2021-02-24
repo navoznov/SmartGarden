@@ -14,7 +14,7 @@ class Valve(Device):
     CLOSED_STATE = "CLOSED"
 
     def __init__(self, id: str, pin: str, state: str, mqtt_topic: str, name: str, description: str=None):
-        self.pin = pin)
+        self.pin = pin
         self.state = state
         self.mqtt_topic = mqtt_topic
 
