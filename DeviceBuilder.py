@@ -20,19 +20,19 @@ class DeviceBuilder:
         mqtt_topic = device_config.get("mqttTopic", None)
 
         if device_type == DeviceType.TEMPERATURE:
-            return new TemperatureSensor()
+            return TemperatureSensor()
         if device_type == DeviceType.VALVE:
-            return new Valve(id, pin, state, mqtt_topic, name, description)
+            return Valve(id, pin, state, mqtt_topic, name, description)
         if device_type == DeviceType.RELAY:
             relay_type = device_config.get("relay_type", None)
             state = device_config.get("state", None)
-            return new Relay(id, pin, mqtt_topic, name, description,
+            return Relay(id, pin, mqtt_topic, name, description,
                              relay_type, state)
         if device_type == DeviceType.SENSOR:
-            return new Sensor(id, pin, mqtt_topic, name, description)
+            return Sensor(id, pin, mqtt_topic, name, description)
         if device_type == DeviceType.LINEAR_ACTUATOR:
             state = device_config.get("state", None)
             open_close_timeout_in_sec = device_config.get(
                 "open_close_timeout_in_sec", None)
-            return new LinearActuator(id, pin, mqtt_topic, name, description,
+            return LinearActuator(id, pin, mqtt_topic, name, description,
                                       state, open_close_timeout_in_sec)

@@ -21,8 +21,8 @@ class Relay(Device):
     DEFAULT_STATE = OPEN_STATE
 
     def __init__(self, id: str, pin: int, mqtt_topic: str,
-                 name=None: str, description=None: str,
-                 relay_type=DEFAULT_RELAY_TYPE: str, state=DEFAULT_STATE: str):
+                 name: str=None, description: str=None,
+                 relay_type: str=DEFAULT_RELAY_TYPE, state: str=DEFAULT_STATE):
         self.pin = onionGpio.OnionGpio(pin)
         self.mqtt_topic = mqtt_topic
         self.relay_type = relay_type if relay_type != None else DEFAULT_RELAY_TYPE

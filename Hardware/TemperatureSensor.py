@@ -1,6 +1,6 @@
 from hardware.oneWire import OneWire
 from hardware.deviceType import DeviceType
-
+from hardware.device import Device
 
 class TemperatureSensor(Device):
     """Температурный датчик"""
@@ -13,7 +13,7 @@ class TemperatureSensor(Device):
 
         # if specified interface not supported
         if self.interface not in self.supportedInterfaces:
-            print "Unsupported interface."
+            print("Unsupported interface.")
             self.listInterfaces()
             return
 
@@ -27,9 +27,9 @@ class TemperatureSensor(Device):
             self.readValue = self.__readOneWire
 
     def listInterfaces(self):
-        print "The supported interfaces are:"
+        print("The supported interfaces are:")
         for interface in self.supportedInterfaces:
-            print interface
+            print(interface)
 
     # read one-wire devices
     def __readOneWire(self):
