@@ -4,7 +4,7 @@
 from options import Options
 from optionsParser import OptionsParser
 from telegram.telegramBot import TelegramBot
-from gardenConfigParser import GardenConfigParser
+import GardenConfigParser
 from deviceBuilder import DeviceBuilder
 
 
