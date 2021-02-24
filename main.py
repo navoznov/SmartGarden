@@ -4,9 +4,8 @@
 from options import Options
 from optionsParser import OptionsParser
 from telegram.telegramBot import TelegramBot
-import GardenConfigParser
 from deviceBuilder import DeviceBuilder
-
+import json
 
 def main():
     # # получаем настройки приложения
@@ -14,7 +13,7 @@ def main():
 
     # получаем конфиг
     config_json_str = open("gardenConfig.json").read()
-    config = GardenConfigParser.parse(config_json_str)
+    config = json.loads(config_json_str)
 
     # получаем настройки устройств
     device_configs = config.get("devices", [])
