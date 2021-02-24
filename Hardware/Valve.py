@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import onionGpio
+# import onionGpio
 from hardware.device import Device
 from hardware.deviceType import DeviceType
 
@@ -13,10 +13,11 @@ class Valve(Device):
     # состояние крана "полностью закрыт"
     CLOSED_STATE = "CLOSED"
 
-    def __init__(self, id, pin, state, mqtt_topic, name=None, description=None):
-        self.pin = onionGpio.OnionGpio(int(pin))
+    def __init__(self, id: str, pin: str, state: str, mqtt_topic: str, name: str, description: str=None):
+        self.pin = pin)
         self.state = state
         self.mqtt_topic = mqtt_topic
+
         super().__init__(id, DeviceType.VALVE, name, description)
 
     def open(self):

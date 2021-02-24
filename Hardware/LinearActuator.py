@@ -18,13 +18,13 @@ class LinearActuator(Device):
     DEFAULT_OPEN_CLOSE_TIMEOUT_IN_SEC = 10
 
     def __init__(self, id: str, pin: str, mqtt_topic: str,
-                 name: str=None, description: str=None,
-                 state: str=DEFAULT_STATE,
-                 open_close_timeout_in_sec: int=DEFAULT_OPEN_CLOSE_TIMEOUT_IN_SEC):
+                 name: str, description: str=None,
+                 state: str=None, open_close_timeout_in_sec: int=None):
         self.pin = onionGpio.OnionGpio(int(pin))
         self.mqtt_topic = mqtt_topic
         self.state = state if state != None else self.DEFAULT_STATE
         self.open_close_timeout_in_sec = open_close_timeout_in_sec if open_close_timeout_in_sec != None else self.DEFAULT_OPEN_CLOSE_TIMEOUT_IN_SEC
+
         super().__init__(id, DeviceType.RELAY, name, description)
 
     def open(self):

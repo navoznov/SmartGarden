@@ -24,8 +24,7 @@ def build_device(device_config):
         return Valve(id, pin, state, mqtt_topic, name, description)
     if device_type == DeviceType.RELAY:
         relay_type = device_config.get("relay_type", None)
-        return Relay(id, pin, mqtt_topic, name, description,
-                            relay_type, state)
+        return Relay(id, pin, mqtt_topic, name, description, relay_type, state)
     if device_type == DeviceType.SENSOR:
         return Sensor(id, pin, mqtt_topic, name, description)
     if device_type == DeviceType.LINEAR_ACTUATOR:
