@@ -10,7 +10,7 @@ class OptionsParser:
     @staticmethod
     def parse():
         try:
-            longopts = ["bot-id=", "mqtt-server=", "db-filename="]
+            longopts = ["bot-token=", "mqtt-server=", "db-filename="]
             argv = sys.argv[1:]
             opts, args = getopt.getopt(argv, "t:m:d", longopts)
             args = {}
