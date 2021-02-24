@@ -6,7 +6,7 @@ class TemperatureSensor(Device):
     """Температурный датчик"""
 
     #TODO: переделать конструктор
-    def __init__(self, interface, args):
+    def __init__(self, id, pin, mqtt_topic, name, description, interface = None, args = {}):
         self.supportedInterfaces = ["oneWire"]
         self.interface = interface
         self.ready = False
@@ -25,6 +25,8 @@ class TemperatureSensor(Device):
             self.ready = self.driver.setupComplete
             # match the return value to
             self.readValue = self.__readOneWire
+
+        super().__init__(id, DeviceType.TEMPERATURE,  name, description)
 
     def listInterfaces(self):
         print("The supported interfaces are:")
