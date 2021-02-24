@@ -4,17 +4,12 @@
 # import onionGpio
 from hardware.device import Device
 import hardware.deviceTypes as deviceTypes
-
+import hardware.relayTypes as relayTypes
 
 class Relay(Device):
     """реле"""
 
-    # тип реле "нормально открытое"
-    NORMALLY_OPEN_TYPE = "NORMALLY_OPEN"
-    # тип реле "нормально закрытое"
-    NORMALLY_CLOSED_TYPE = "NORMALLY_CLOSED"
-    # дефолтный тип реле
-    DEFAULT_RELAY_TYPE = NORMALLY_OPEN_TYPE
+
 
     # состояние реле "открыто"
     OPEN_STATE = "OPEN"
@@ -28,7 +23,7 @@ class Relay(Device):
                  relay_type: str=None, state: str=None):
         self.pin = pin
         self.mqtt_topic = mqtt_topic
-        self.relay_type = relay_type if relay_type != None else self.DEFAULT_RELAY_TYPE
+        self.relay_type = relay_type if relay_type != None else relayTypes.DEFAULT
         self.state = state if state != None else self.DEFAULT_STATE
 
         super().__init__(id, deviceTypes.RELAY, name, description)
