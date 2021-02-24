@@ -3,6 +3,7 @@ Cистема управления теплицей, садом, огродом.
 
 ## Установка
 $ pip3 install python-telegram-bot
+$ pip3 install paho-mqtt
 
 
 ## Функционал
