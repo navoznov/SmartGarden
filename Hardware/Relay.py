@@ -5,26 +5,19 @@
 from hardware.device import Device
 import hardware.deviceTypes as deviceTypes
 import hardware.relayTypes as relayTypes
+import hardware.relayStates as relayStates
+
 
 class Relay(Device):
     """реле"""
 
-
-
-    # состояние реле "открыто"
-    OPEN_STATE = "OPEN"
-    # состояние реле "закрыто"
-    CLOSED_STATE = "CLOSED"
-    # дефолтное состояние реле
-    DEFAULT_STATE = OPEN_STATE
-
     def __init__(self, id: str, pin: str, mqtt_topic: str,
-                 name: str, description: str=None,
-                 relay_type: str=None, state: str=None):
+                 name: str, description: str = None,
+                 relay_type: str = None, state: str = None):
         self.pin = pin
         self.mqtt_topic = mqtt_topic
         self.relay_type = relay_type if relay_type != None else relayTypes.DEFAULT
-        self.state = state if state != None else self.DEFAULT_STATE
+        self.state = state if state != None else relayStates.DEFAULT
 
         super().__init__(id, deviceTypes.RELAY, name, description)
 
