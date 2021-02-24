@@ -9,3 +9,5 @@ class DeviceType:
     SENSOR = "sensor"
     # линейный актуатор
     LINEAR_ACTUATOR = "linear_actuator"
+    # дисплей 16х2
+    LCD1602 = "lcd1602"
