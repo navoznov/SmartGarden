@@ -1,5 +1,8 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
 from hardware.oneWire import OneWire
-import hardware.deviceType as deviceType
+import hardware.deviceTypes as deviceTypes
 from hardware.device import Device
 
 class TemperatureSensor(Device):
@@ -26,7 +29,7 @@ class TemperatureSensor(Device):
             # match the return value to
             self.readValue = self.__readOneWire
 
-        super().__init__(id, deviceType.TEMPERATURE,  name, description)
+        super().__init__(id, deviceTypes.TEMPERATURE,  name, description)
 
     def listInterfaces(self):
         print("The supported interfaces are:")

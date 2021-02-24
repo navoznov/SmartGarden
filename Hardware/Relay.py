@@ -1,6 +1,9 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
 # import onionGpio
 from hardware.device import Device
-import hardware.deviceType as deviceType
+import hardware.deviceTypes as deviceTypes
 
 
 class Relay(Device):
@@ -28,7 +31,7 @@ class Relay(Device):
         self.relay_type = relay_type if relay_type != None else self.DEFAULT_RELAY_TYPE
         self.state = state if state != None else self.DEFAULT_STATE
 
-        super().__init__(id, deviceType.RELAY, name, description)
+        super().__init__(id, deviceTypes.RELAY, name, description)
 
     def open(self):
         self.state = true

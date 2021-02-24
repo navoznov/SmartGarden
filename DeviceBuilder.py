@@ -6,7 +6,7 @@ from hardware.valve import Valve
 from hardware.relay import Relay
 from hardware.sensor import Sensor
 from hardware.linearActuator import LinearActuator
-import hardware.deviceType as deviceType
+import hardware.deviceTypes as deviceTypes
 
 
 def build_device(device_config):
@@ -18,17 +18,15 @@ def build_device(device_config):
     mqtt_topic = device_config.get("mqttTopic", None)
     state = device_config.get("state", None)
 
-    if device_type == deviceType.TEMPERATURE:
+    if device_type == deviceTypes.TEMPERATURE:
         return TemperatureSensor(id, pin, mqtt_topic, name, description)
-    if device_type == deviceType.VALVE:
+    if device_type == deviceTypes.VALVE:
         return Valve(id, pin, state, mqtt_topic, name, description)
-    if device_type == deviceType.RELAY:
+    if device_type == deviceTypes.RELAY:
         relay_type = device_config.get("relay_type", None)
         return Relay(id, pin, mqtt_topic, name, description, relay_type, state)
-    if device_type == deviceType.SENSOR:
+    if device_type == deviceTypes.SENSOR:
         return Sensor(id, pin, mqtt_topic, name, description)
-    if device_type == deviceType.LINEAR_ACTUATOR:
-        open_close_timeout_in_sec = device_config.get(
-            "open_close_timeout_in_sec", None)
-        return LinearActuator(id, pin, mqtt_topic, name, description,
-                                    state, open_close_timeout_in_sec)
+    if device_type == deviceTypes.LINEAR_ACTUATOR:
+        open_close_timeout_in_sec = device_config.get("open_close_timeout_in_sec", None)
+        return LinearActuator(id, pin, mqtt_topic, name, description, state, open_close_timeout_in_sec)

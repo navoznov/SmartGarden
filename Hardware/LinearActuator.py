@@ -1,6 +1,6 @@
 import onionGpio
 from hardware.device import Device
-import hardware.deviceType as deviceType
+import hardware.deviceTypes as deviceTypes
 
 class LinearActuator(Device):
     """линейный актуатор"""
@@ -25,7 +25,7 @@ class LinearActuator(Device):
         self.state = state if state != None else self.DEFAULT_STATE
         self.open_close_timeout_in_sec = open_close_timeout_in_sec if open_close_timeout_in_sec != None else self.DEFAULT_OPEN_CLOSE_TIMEOUT_IN_SEC
 
-        super().__init__(id, deviceType.RELAY, name, description)
+        super().__init__(id, deviceTypes.RELAY, name, description)
 
     def open(self):
         self.state = LinearActuator.WORKING_STATE
