@@ -34,8 +34,10 @@ class LinearActuator(Device):
             return
 
         self.state = linearActuatorStates.WORKING
-        time.sleep(self.open_close_timeout_in_sec)
+
         # TODO: на время open_close_timeout_in_sec подавать 1 на pin1
+        time.sleep(self.open_close_timeout_in_sec)
+
         self.state = linearActuatorStates.OPEN
         if callback != None:
             callback()
@@ -50,8 +52,10 @@ class LinearActuator(Device):
             return
 
         self.state = linearActuatorStates.WORKING
-        time.sleep(self.open_close_timeout_in_sec)
+
         # TODO: на время open_close_timeout_in_sec подавать 1 на pin2
+        time.sleep(self.open_close_timeout_in_sec)
+
         self.state = linearActuatorStates.CLOSED
         if callback != None:
             callback()
