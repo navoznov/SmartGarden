@@ -22,7 +22,7 @@ class LinearActuator(Device):
         self.state = state if state != None else linearActuatorStates.DEFAULT
         self.open_close_timeout_in_sec = open_close_timeout_in_sec if open_close_timeout_in_sec != None else self.__DEFAULT_OPEN_CLOSE_TIMEOUT_IN_SEC
 
-        super().__init__(id, deviceTypes.RELAY, name, description)
+        super().__init__(id, deviceTypes.LINEAR_ACTUATOR, name, description)
 
     def open(self, callback=None):
         if self.state == linearActuatorStates.WORKING:
