@@ -3,30 +3,42 @@
         {
             "id": "temperature1",
             "type": "temperature",
+            "name": "Temperature at the top",
             "pin": "0",
-            "mqttTopic": "garden/gardenhouse/inside/temperature"
+            "mqttTopic": "garden/gardenhouse/inside/temperature/top"
+        },
+        {
+            "id": "temperature2",
+            "type": "temperature",
+            "name": "Temperature from the bottom",
+            "pin": "0",
+            "mqttTopic": "garden/gardenhouse/inside/temperature/bottom"
         },
         {
             "id": "valve1",
             "type": "valve",
+            "name": "Cucumbers watering",
             "pin": "1",
             "mqttTopic": "gardenhouse/inside/temperature"
         },
         {
             "id": "valve2",
             "type": "valve",
+            "name": "Tomatos watering",
             "pin": "7",
             "mqttTopic": "gardenhouse/inside/temperature"
         },
         {
             "id": "valve3",
             "type": "valve",
+            "name": "Cannabis watering",
             "pin": "8",
             "mqttTopic": "gardenhouse/inside/temperature"
         },
         {
             "id": "relay1",
             "type": "relay",
+            "name": "Internal ighting",
             "pin": "2",
             "mqttTopic": "gardenhouse/inside/temperature",
             "relay_type": "NORMALLY_OPEN"
