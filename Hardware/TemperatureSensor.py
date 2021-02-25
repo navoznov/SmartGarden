@@ -13,6 +13,7 @@ class TemperatureSensor(Device):
         self.supportedInterfaces = ["oneWire"]
         self.interface = interface
         self.ready = False
+        super().__init__(id, deviceTypes.TEMPERATURE,  name, description)
 
         # if specified interface not supported
         if self.interface not in self.supportedInterfaces:
@@ -29,7 +30,6 @@ class TemperatureSensor(Device):
             # match the return value to
             self.readValue = self.__readOneWire
 
-        super().__init__(id, deviceTypes.TEMPERATURE,  name, description)
 
     def listInterfaces(self):
         print("The supported interfaces are:")
