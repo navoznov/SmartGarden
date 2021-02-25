@@ -22,7 +22,7 @@ class Relay(Device):
 
         super().__init__(id, deviceTypes.RELAY, name, description)
 
-    def open(self, callback):
+    def open(self, callback = None):
         self.state = true
 
         # TODO: установить пин в 1
@@ -30,7 +30,7 @@ class Relay(Device):
         if callback != None:
             callback()
 
-    def close(self, callback):
+    def close(self, callback = None):
         self.state = false
         # TODO: установить пин в 0
         # TODO: уведомление о закрытии

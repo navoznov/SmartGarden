@@ -1,4 +1,4 @@
-import time
+import time, logging
 import onionGpio
 from hardware.device import Device
 import hardware.deviceTypes as deviceTypes
@@ -17,30 +17,30 @@ class LinearActuator(Device):
     DEFAULT_STATE = OPEN_STATE
 
     # дефолтное максимальное время полного открыти (или закрытия) актуатора (в секундах)
-    DEFAULT_OPEN_CLOSE_TIMEOUT_IN_SEC = 10
+    DEFAULT_OPEN_CLOSE_TIMEOUT_IN_SEC = 5
 
     def __init__(self, id: str, pins: List[str], mqtt_topic: str,
                  name: str, description: str = None,
                  state: str = None, open_close_timeout_in_sec: int = None):
         # линейный актуатор подключается на два пина
-        self.pins = pins
+        self.pin1, self.pin2 = pins
         self.mqtt_topic = mqtt_topic
         self.state = state if state != None else self.DEFAULT_STATE
         self.open_close_timeout_in_sec = open_close_timeout_in_sec if open_close_timeout_in_sec != None else self.DEFAULT_OPEN_CLOSE_TIMEOUT_IN_SEC
 
         super().__init__(id, deviceTypes.RELAY, name, description)
 
-    def open(self, callback):
+    def open(self, callback = None):
         self.state = LinearActuator.WORKING_STATE
-        time.sleep(actuator.open_close_timeout_in_sec)
+        time.sleep(self.open_close_timeout_in_sec)
         # TODO: на время open_close_timeout_in_sec подавать 1 на пин
         self.state = LinearActuator.OPEN_STATE
         if callback != None:
             callback()
 
-    def close(self, callback):
+    def close(self, callback = None):
         self.state = LinearActuator.WORKING_STATE
-        time.sleep(actuator.open_close_timeout_in_sec)
+        time.sleep(self.open_close_timeout_in_sec)
         # TODO: на время open_close_timeout_in_sec подавать 0 на пин
         self.state = LinearActuator.CLOSED_STATE
         if callback != None:
