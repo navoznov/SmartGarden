@@ -13,15 +13,22 @@
             "mqttTopic": "gardenhouse/inside/temperature"
         },
         {
+            "id": "relay1",
+            "type": "relay",
+            "pin": "2",
+            "mqttTopic": "gardenhouse/inside/temperature",
+            "relay_type": "NORMALLY_OPEN"
+        },
+        {
             "id": "actuator1",
             "type": "linear_actuator",
-            "pin": "2",
+            "pins": ["3", "4"],
             "mqttTopic": "gardenhouse/actuators/front"
         },
         {
             "id": "actuator2",
             "type": "linear_actuator",
-            "pin": "3",
+            "pins": ["5", "6"],
             "mqttTopic": "gardenhouse/actuators/back"
         }
     ]

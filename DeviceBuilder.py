@@ -15,6 +15,8 @@ def build_device(device_config):
     name = device_config.get("name", None)
     description = device_config.get("description", None)
     pin = device_config.get("pin", None)
+    pins = device_config.get("pins", None)
+
     mqtt_topic = device_config.get("mqttTopic", None)
     state = device_config.get("state", None)
 
@@ -29,4 +31,4 @@ def build_device(device_config):
         return Sensor(id, pin, mqtt_topic, name, description)
     elif device_type == deviceTypes.LINEAR_ACTUATOR:
         open_close_timeout_in_sec = device_config.get("open_close_timeout_in_sec", None)
-        return LinearActuator(id, pin, mqtt_topic, name, description, state, open_close_timeout_in_sec)
+        return LinearActuator(id, pins, mqtt_topic, name, description, state, open_close_timeout_in_sec)

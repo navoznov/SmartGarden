@@ -2,7 +2,7 @@ import time
 import onionGpio
 from hardware.device import Device
 import hardware.deviceTypes as deviceTypes
-
+from typing import List
 
 class LinearActuator(Device):
     """линейный актуатор"""
@@ -19,10 +19,11 @@ class LinearActuator(Device):
     # дефолтное максимальное время полного открыти (или закрытия) актуатора (в секундах)
     DEFAULT_OPEN_CLOSE_TIMEOUT_IN_SEC = 10
 
-    def __init__(self, id: str, pin: str, mqtt_topic: str,
+    def __init__(self, id: str, pins: List[str], mqtt_topic: str,
                  name: str, description: str = None,
                  state: str = None, open_close_timeout_in_sec: int = None):
-        self.pin = onionGpio.OnionGpio(int(pin))
+        # линейный актуатор подключается на два пина
+        self.pins = pins
         self.mqtt_topic = mqtt_topic
         self.state = state if state != None else self.DEFAULT_STATE
         self.open_close_timeout_in_sec = open_close_timeout_in_sec if open_close_timeout_in_sec != None else self.DEFAULT_OPEN_CLOSE_TIMEOUT_IN_SEC
