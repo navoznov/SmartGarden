@@ -13,6 +13,18 @@
             "mqttTopic": "gardenhouse/inside/temperature"
         },
         {
+            "id": "valve2",
+            "type": "valve",
+            "pin": "7",
+            "mqttTopic": "gardenhouse/inside/temperature"
+        },
+        {
+            "id": "valve3",
+            "type": "valve",
+            "pin": "8",
+            "mqttTopic": "gardenhouse/inside/temperature"
+        },
+        {
             "id": "relay1",
             "type": "relay",
             "pin": "2",
