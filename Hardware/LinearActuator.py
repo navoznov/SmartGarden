@@ -38,7 +38,7 @@ class LinearActuator(Device):
         # TODO: на время open_close_timeout_in_sec подавать 1 на pin1
         time.sleep(self.open_close_timeout_in_sec)
 
-        self.state = linearActuatorStates.OPEN
+        self.state = linearActuatorStates.OPENED
         if callback != None:
             callback()
 
