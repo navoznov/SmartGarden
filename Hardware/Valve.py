@@ -17,12 +17,16 @@ class Valve(Device):
 
         super().__init__(id, deviceTypes.VALVE, name, description)
 
-    def open(self):
+    def open(self, callback):
         self.state = valveStates.OPENED
         # TODO: установить пин в 1
         # TODO: уведомление об открытии
+        if callback != None:
+            callback()
 
-    def close(self):
+    def close(self, callback):
         self.state = valveStates.CLOSED
         # TODO: установить пин в 0
         # TODO: уведомление о закрытии
+        if callback != None:
+            callback()

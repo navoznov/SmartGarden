@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 # import onionGpio
+import time
 from hardware.device import Device
 import hardware.deviceTypes as deviceTypes
 import hardware.relayTypes as relayTypes
@@ -21,12 +22,17 @@ class Relay(Device):
 
         super().__init__(id, deviceTypes.RELAY, name, description)
 
-    def open(self):
+    def open(self, callback):
         self.state = true
+
         # TODO: установить пин в 1
         # TODO: уведомление об открытии
+        if callback != None:
+            callback()
 
-    def close(self):
+    def close(self, callback):
         self.state = false
         # TODO: установить пин в 0
         # TODO: уведомление о закрытии
+        if callback != None:
+            callback()
