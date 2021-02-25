@@ -22,12 +22,14 @@
         {
             "id": "actuator1",
             "type": "linear_actuator",
+            "name": "Front window",
             "pins": ["3", "4"],
             "mqttTopic": "gardenhouse/actuators/front"
         },
         {
             "id": "actuator2",
             "type": "linear_actuator",
+            "name": "Back window",
             "pins": ["5", "6"],
             "mqttTopic": "gardenhouse/actuators/back"
         }
