@@ -6,7 +6,7 @@ import time
 from hardware.device import Device
 import hardware.deviceTypes as deviceTypes
 import hardware.relayTypes as relayTypes
-import hardware.relayStates as relayStates
+import hardware.switchStates as switchStates
 
 
 class Relay(Device):
@@ -18,7 +18,7 @@ class Relay(Device):
         self.pin = pin
         self.mqtt_topic = mqtt_topic
         self.relay_type = relay_type if relay_type != None else relayTypes.DEFAULT
-        self.state = state if state != None else relayStates.DEFAULT
+        self.state = state if state != None else switchStates.OPENED
 
         super().__init__(id, deviceTypes.RELAY, name, description)
 
