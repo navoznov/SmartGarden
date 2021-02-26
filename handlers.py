@@ -58,35 +58,41 @@ def close_both_windows_handler(update: Update, context: CallbackContext) -> int:
     return states.MAIN_STATE
 
 
-def open_window_handler(update: Update, context: CallbackContext) -> int:
+def open_device_handler(update: Update, context: CallbackContext) -> int:
     match = re.match(r'Открыть (.+)', update.message.text)
-    actuator_id = match.group(1)
-    actuator = garden.get_device_by_id(actuator_id)
+    device_id = match.group(1)
+    device = garden.get_device_by_id(device_id)
 
-    message = update.message
-    text = f'{actuator.name} открывается. Подождите {actuator.open_close_timeout_in_sec} секунд.'
-    message.reply_text(text)
+    text = f'{device.id} открывается.'
+    if hasattr(device, 'open_close_timeout_in_sec'):
+        text += f' Подождите {device.open_close_timeout_in_sec} секунд.'
+    message = update.message.reply_text(text)
 
-    actuator.open()
+    device.open()
 
-    message.reply_text(f'{actuator.name} открыт')
+    message.edit_text(f'{device.id} открыт.')
+
     reply_keyboard = __get_keyboard()
     keyboard_markup = ReplyKeyboardMarkup(reply_keyboard, one_time_keyboard=True)
     message.reply_text(__get_status_text(), reply_markup=keyboard_markup)
     return states.MAIN_STATE
 
 
-def close_window_handler(update: Update, context: CallbackContext) -> int:
+def close_device_handler(update: Update, context: CallbackContext) -> int:
     match = re.match(r'Закрыть (.+)', update.message.text)
-    actuator_id = match.group(1)
-    actuator = garden.get_device_by_id(actuator_id)
+    device_id = match.group(1)
+    device = garden.get_device_by_id(device_id)
 
-    text = f'{actuator.name} закрывается. Подождите {actuator.open_close_timeout_in_sec} секунд.'
-    update.message.reply_text(text)
+    text = f'{device.id} закрывается.'
+    if hasattr(device, 'open_close_timeout_in_sec'):
+        text += f' Подождите {device.open_close_timeout_in_sec} секунд.'
 
-    actuator.open()
+    message = update.message.reply_text(text)
 
-    update.message.reply_text(f'{actuator.name} закрыт')
+    device.close()
+
+    message.edit_text(f'{device.id} закрыт.')
+
     reply_keyboard = __get_keyboard()
     keyboard_markup = ReplyKeyboardMarkup(reply_keyboard, one_time_keyboard=True)
     update.message.reply_text(__get_status_text(), reply_markup=keyboard_markup)
@@ -99,30 +105,31 @@ def __get_status_text() -> str:
 
 
 def __get_keyboard() -> List[List[str]]:
+    def __get_device_type_buttons(device_type):
+        devices = garden.get_devices_by_type(device_type)
+        opened_devices = [a for a in devices if a.state == hardware.switchStates.OPENED]
+        closed_devices = [a for a in devices if a.state == hardware.switchStates.CLOSED]
+        return [f'Закрыть {a.id}' for a in opened_devices] + [f'Открыть {a.id}' for a in closed_devices]
+
+    buttons = []
+
     # окна
-    actuator_buttons = []
-    actuators = garden.get_devices_by_type(hardware.deviceTypes.LINEAR_ACTUATOR)
-    opened_actuators = [a for a in actuators if a.state == hardware.switchStates.OPENED]
-    actuator_buttons = actuator_buttons + [f'Закрыть {a.id}' for a in opened_actuators]
-    closed_actuators = [a for a in actuators if a.state == hardware.switchStates.CLOSED]
-    actuator_buttons = actuator_buttons + [f'Открыть {a.id}' for a in closed_actuators]
+    actuator_buttons = __get_device_type_buttons(hardware.deviceTypes.LINEAR_ACTUATOR)
     buttons.append(actuator_buttons)
+    actuators = garden.get_devices_by_type(hardware.deviceTypes.LINEAR_ACTUATOR)
 
-    if len(actuators) == len(opened_actuators):
-        buttons.append(buttonTitles.CLOSE_BOTH_WINDOW_BUTTON)
+    if len([a for a in actuators if a.state == hardware.switchStates.OPENED]) == 0:
+        buttons.append([buttonTitles.OPEN_BOTH_WINDOW_BUTTON])
 
-    if len(actuators) == len(closed_actuators):
-        buttons.append(buttonTitles.OPEN_BOTH_WINDOW_BUTTON)
+    if len([a for a in actuators if a.state == hardware.switchStates.CLOSED]) == 0:
+        buttons.append([buttonTitles.CLOSE_BOTH_WINDOW_BUTTON])
 
     # краны
-    valve_buttons = []
-    valves = garden.get_devices_by_type(hardware.deviceTypes.VALVE)
-    opened_valves = [a for a in valves if a.state == hardware.switchStates.OPENED]
-    valve_buttons = valve_buttons + [f'Закрыть {a.id}' for a in opened_valves]
-    closed_valves = [a for a in valves if a.state == hardware.switchStates.CLOSED]
-    valve_buttons = valve_buttons + [f'Открыть {a.id}' for a in closed_valves]
-    buttons.append(actuator_buttons)
+    valve_buttons = __get_device_type_buttons(hardware.deviceTypes.VALVE)
+    buttons.append(valve_buttons)
 
+    # реле
+    valve_buttons = __get_device_type_buttons(hardware.deviceTypes.RELAY)
+    buttons.append(valve_buttons)
 
-
-    return [[b] for b in buttons]
+    return buttons
