@@ -1,4 +1,3 @@
-import onionGpio
 from hardware.device import Device
 import hardware.deviceTypes as deviceTypes
 

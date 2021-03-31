@@ -1,6 +1,5 @@
 import time
 import logging
-import onionGpio
 from hardware.device import Device
 import hardware.deviceTypes as deviceTypes
 import hardware.switchStates as switchStates
