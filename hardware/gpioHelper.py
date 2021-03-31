@@ -7,7 +7,8 @@ GPIO.setwarnings(False)
 
 def set_pin_value(pin, value):
     logging.debug(f'Пин #{pin} <- {value}')
-    gpio_value = GPIO.HIGH if bool(value) else GPIO.LOW
+    gpio_value = GPIO.HIGH if bool(int(value)) else GPIO.LOW
+    print(f'Pin #{pin} <- {gpio_value}')
     GPIO.output(int(pin), gpio_value)
     pass
 
