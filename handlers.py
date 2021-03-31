@@ -10,10 +10,8 @@ from telegram.ext import (
     ConversationHandler
 )
 
-import states
-import buttonTitles
-import hardware.deviceTypes
-import hardware.switchStates
+import hardware.gpioHelper as gpioHelper
+import states, buttonTitles, hardware.deviceTypes, hardware.switchStates
 from hardware.device import Device
 from options import options, Options
 import garden
@@ -98,6 +96,12 @@ def close_device_handler(update: Update, context: CallbackContext) -> int:
     keyboard_markup = ReplyKeyboardMarkup(reply_keyboard, one_time_keyboard=True)
     update.message.reply_text(__get_status_text(), reply_markup=keyboard_markup)
     return states.MAIN_STATE
+
+
+def debug_set_pin_value(update: Update, context: CallbackContext) -> int:
+    text = update.message.text
+    _, pinStr, valueStr = text.split(' ')
+    gpioHelper.set_pin_value(pinStr, valueStr)
 
 
 def __get_status_text() -> str:

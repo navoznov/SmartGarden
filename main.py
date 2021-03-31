@@ -38,6 +38,7 @@ conversation_handler = ConversationHandler(
     fallbacks=[CommandHandler('cancel', handlers.cancel)],
 )
 updater.dispatcher.add_handler(conversation_handler)
+updater.dispatcher.add_handler(CommandHandler('set', handlers.debug_set_pin_value))
 updater.start_polling()
 updater.idle()
 
