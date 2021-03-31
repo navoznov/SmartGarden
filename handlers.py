@@ -66,7 +66,8 @@ def open_device_handler(update: Update, context: CallbackContext) -> int:
     text = f'{device.id} открывается.'
     if hasattr(device, 'open_close_timeout_in_sec'):
         text += f' Подождите {device.open_close_timeout_in_sec} секунд.'
-    message = update.message.reply_text(text)
+    message = update.message
+    message = update.message.reply_text(text, reply_to_message_id=message.message_id)
 
     device.open()
 
@@ -100,7 +101,7 @@ def close_device_handler(update: Update, context: CallbackContext) -> int:
 
 
 def __get_status_text() -> str:
-
+    # TODO: соформировать текст статуса
     return 'Статус'
 
 
