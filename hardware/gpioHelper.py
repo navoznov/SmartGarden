@@ -13,9 +13,9 @@ def set_pin_value(pin, value):
     pass
 
 def setup_pin_out(pin):
-    GPIO.setup(i, GPIO.OUT)
+    GPIO.setup(pin, GPIO.OUT)
     pass
 
 def setup_pin_in(pin):
-    GPIO.setup(i, GPIO.IN)
+    GPIO.setup(pin, GPIO.IN)
     pass
