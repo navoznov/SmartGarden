@@ -38,8 +38,8 @@ class LinearActuator(Device):
 
         self.state = switchStates.WORKING
 
-        gpioHelper.set_pin_value(self.pin1, 1)
-        gpioHelper.set_pin_value(self.pin2, 0)
+        gpioHelper.set_pin_value(self.pin1, 0)
+        gpioHelper.set_pin_value(self.pin2, 1)
 
         time.sleep(self.open_close_timeout_in_sec)
 
@@ -61,13 +61,13 @@ class LinearActuator(Device):
 
         self.state = switchStates.WORKING
 
-        gpioHelper.set_pin_value(self.pin1, 0)
-        gpioHelper.set_pin_value(self.pin2, 1)
+        gpioHelper.set_pin_value(self.pin1, 1)
+        gpioHelper.set_pin_value(self.pin2, 0)
 
         time.sleep(self.open_close_timeout_in_sec)
 
-        gpioHelper.set_pin_value(self.pin1, 0)
-        gpioHelper.set_pin_value(self.pin2, 0)
+        gpioHelper.set_pin_value(self.pin1, 1)
+        gpioHelper.set_pin_value(self.pin2, 1)
 
         self.state = switchStates.CLOSED
         if callback != None:
