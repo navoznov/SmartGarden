@@ -9,7 +9,7 @@ GPIO.setwarnings(False)
 def set_pin_value(pin, value):
     logging.debug(f'Пин №{pin} <- {value}')
     # onionGpio.OnionGpio.setValue()
-    GPIO.output(pin, value)
+    GPIO.output(int(pin), value)
     pass
 
 def setup_pin_out(pin):
