@@ -11,14 +11,14 @@
             "id": "temperature2",
             "type": "temperature",
             "name": "Temperature from the bottom",
-            "pin": "0",
+            "pin": "1",
             "mqttTopic": "garden/gardenhouse/inside/temperature/bottom"
         },
         {
             "id": "valve1",
             "type": "valve",
             "name": "Cucumbers watering",
-            "pin": "1",
+            "pin": "11",
             "mqttTopic": "gardenhouse/inside/temperature"
         },
         {
@@ -39,7 +39,7 @@
             "id": "relay1",
             "type": "relay",
             "name": "Internal ighting",
-            "pin": "2",
+            "pin": "19",
             "mqttTopic": "gardenhouse/inside/temperature",
             "relay_type": "NORMALLY_OPEN"
         },
@@ -47,7 +47,7 @@
             "id": "actuator1",
             "type": "linear_actuator",
             "name": "Front window",
-            "pins": ["3", "4"],
+            "pins": ["2", "3"],
             "mqttTopic": "gardenhouse/actuators/front"
         },
         {
