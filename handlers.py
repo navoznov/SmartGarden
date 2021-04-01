@@ -129,7 +129,7 @@ def debug_set_pin_value(update: Update, context: CallbackContext) -> int:
 def __get_status_text() -> str:
     devices = garden.get_devices()
     statuses = [d.get_status() for d in devices]
-    return '\n'.join(statuses)
+    return '\n'.join(statuses) if len(statuses) else ''
 
 
 def __get_keyboard() -> List[List[str]]:
