@@ -7,5 +7,5 @@ class Device:
 
     def get_status(self) -> str:
         # Абстрактный метод. Необходима реализация в наследниках
-        print(f'Неизвестный статус устройства {self.id}')
+        return f'Неизвестный статус устройства {self.id}'
         # raise NotImplementedError("Необходимо переопределить метод")
