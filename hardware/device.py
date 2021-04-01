@@ -4,3 +4,8 @@ class Device:
         self.device_type = device_type
         self.name = name if name != None else f'Датчик #{id}'
         self.description = description if description != None else f'Датчик #{id}'
+
+    def get_status(self) -> str:
+        # Абстрактный метод. Необходима реализация в наследниках
+        print(f'Неизвестный статус устройства {self.id}')
+        # raise NotImplementedError("Необходимо переопределить метод")

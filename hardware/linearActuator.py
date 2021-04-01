@@ -27,6 +27,20 @@ class LinearActuator(Device):
         gpioHelper.setup_pin_out(self.pin1)
         gpioHelper.setup_pin_out(self.pin2)
 
+    def get_status(self) -> str:
+        status = f'Линейный актуатор "{self.name}" '
+
+        if self.state == switchStates.OPENED:
+            status += 'открыт.'
+        elif self.state == switchStates.CLOSED:
+            status += 'закрыт.'
+        elif self.state == switchStates.WORKING:
+            status += 'в процессе открытия или закрытия.'
+        else:
+            raise NotImplementedError(f'Неизвестное состояние линейного актуатора {self.id}')
+
+        return status
+
     def open(self, callback=None):
         if self.state == switchStates.WORKING:
             print(f'{self.name} дождитесь открытия/закрытия линейного актуатора')
