@@ -29,6 +29,7 @@ def cancel(update: Update, context: CallbackContext) -> int:
 
 
 def open_both_windows_handler(update: Update, context: CallbackContext) -> int:
+    logging.info(f'Команда открытие всех актуаторов')
     actuators = garden.get_devices_by_type(hardware.deviceTypes.LINEAR_ACTUATOR)
     original_message = update.message
     reply_message = None
@@ -51,6 +52,7 @@ def open_both_windows_handler(update: Update, context: CallbackContext) -> int:
 
 
 def close_both_windows_handler(update: Update, context: CallbackContext) -> int:
+    logging.info(f'Команда закрытие всех актуаторов')
     # TODO: избавиться от дублирования кода в open_both_windows_handler и close_both_windows_handler
     actuators = garden.get_devices_by_type(hardware.deviceTypes.LINEAR_ACTUATOR)
     original_message = update.message
