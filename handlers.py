@@ -115,7 +115,7 @@ def __get_status_text() -> str:
 def __get_keyboard() -> List[List[str]]:
     def __get_device_type_buttons(device_type):
         def __get_button_text_for_device(device):
-            return f'{"Закрыть" if device.state == switchStates.OPENED else "Открыть"} {device.id}'
+            return f'{"Закрыть" if device.state == hardware.switchStates.OPENED else "Открыть"} {device.id}'
 
         device_finished_states = [hardware.switchStates.OPENED, hardware.switchStates.CLOSED]
         devices = [d for d in garden.get_devices_by_type(device_type) if d.state in device_finished_states]
