@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+import logging
 from telegram.ext import (
     Updater,
     CommandHandler,
@@ -19,8 +20,10 @@ import buttonTitles
 import states
 import handlers
 
-devices = garden.devices
+console_logging_handler = logging.StreamHandler()
+logging.basicConfig(handlers=(console_logging_handler,), level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s', datefmt='%d-%b-%y %H:%M:%S')
 
+devices = garden.devices
 updater = Updater(options.telegram_bot_token)
 dispatcher = updater.dispatcher
 conversation_handler = ConversationHandler(
