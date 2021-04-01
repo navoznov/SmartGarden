@@ -21,7 +21,7 @@ import states
 import handlers
 
 console_logging_handler = logging.StreamHandler()
-logging.basicConfig(handlers=(console_logging_handler,), level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s', datefmt='%d-%b-%y %H:%M:%S')
+logging.basicConfig(handlers=(console_logging_handler,), level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s', datefmt='%d-%b-%y %H:%M:%S')
 
 devices = garden.devices
 updater = Updater(options.telegram_bot_token)

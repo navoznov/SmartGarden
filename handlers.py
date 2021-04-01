@@ -60,7 +60,7 @@ def open_device_handler(update: Update, context: CallbackContext) -> int:
     match = re.match(r'Открыть (.+)', update.message.text)
     device_id = match.group(1)
     device = garden.get_device_by_id(device_id)
-    logging.debug(f'Команда открытие "{device.id}"')
+    logging.info(f'Команда открытие "{device.id}"')
     text = f'{device.id} открывается.'
     if hasattr(device, 'open_close_timeout_in_sec'):
         text += f' Подождите {device.open_close_timeout_in_sec} секунд.'
@@ -81,7 +81,7 @@ def close_device_handler(update: Update, context: CallbackContext) -> int:
     match = re.match(r'Закрыть (.+)', update.message.text)
     device_id = match.group(1)
     device = garden.get_device_by_id(device_id)
-    logging.debug(f'Команда закрытие "{device.id}"')
+    logging.info(f'Команда закрытие "{device.id}"')
 
     text = f'{device.id} закрывается.'
     if hasattr(device, 'open_close_timeout_in_sec'):
