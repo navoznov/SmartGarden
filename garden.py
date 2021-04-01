@@ -22,6 +22,10 @@ def __get_devices() -> List[Device]:
 devices = __get_devices()
 
 
+def get_devices() -> List[Device]:
+    return devices
+
+
 def get_devices_by_type(device_type: str) -> List[Device]:
     return [d for d in devices if d.device_type == device_type]
 
