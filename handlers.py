@@ -30,29 +30,46 @@ def cancel(update: Update, context: CallbackContext) -> int:
 
 def open_both_windows_handler(update: Update, context: CallbackContext) -> int:
     actuators = garden.get_devices_by_type(hardware.deviceTypes.LINEAR_ACTUATOR)
+    original_message = update.message
+    reply_message = None
+    constant_text = ''
     for actuator in actuators:
-        text = f'{actuator.name} открывается. Подождите {actuator.open_close_timeout_in_sec} секунд.'
-        update.message.reply_text(text)
+        text = f'{actuator.name} открывается. Подождите {actuator.open_close_timeout_in_sec} секунд.\n'
+        if reply_message:
+            reply_message = reply_message.edit_text(constant_text + text, reply_to_message_id=original_message.message_id)
+        else:
+            reply_message = original_message.reply_text(constant_text + text, reply_to_message_id=original_message.message_id)
+
         actuator.open()
-        update.message.reply_text(f'{actuator.name} открыт')
+        constant_text += f'{actuator.name} открыт.\n'
+        reply_message.edit_text(constant_text)
 
     reply_keyboard = __get_keyboard()
     keyboard_markup = ReplyKeyboardMarkup(reply_keyboard, one_time_keyboard=True)
-    update.message.reply_text(__get_status_text(), reply_markup=keyboard_markup)
+    original_message.reply_text(__get_status_text(), reply_markup=keyboard_markup)
     return states.MAIN_STATE
 
 
 def close_both_windows_handler(update: Update, context: CallbackContext) -> int:
+    # TODO: избавиться от дублирования кода в open_both_windows_handler и close_both_windows_handler
     actuators = garden.get_devices_by_type(hardware.deviceTypes.LINEAR_ACTUATOR)
+    original_message = update.message
+    reply_message = None
+    constant_text = ''
     for actuator in actuators:
         text = f'{actuator.name} закрывается. Подождите {actuator.open_close_timeout_in_sec} секунд.'
-        update.message.reply_text(text)
+        if reply_message:
+            reply_message = reply_message.edit_text(constant_text + text, reply_to_message_id=original_message.message_id)
+        else:
+            reply_message = original_message.reply_text(constant_text + text, reply_to_message_id=original_message.message_id)
+
         actuator.close()
-        update.message.reply_text(f'{actuator.name} закрыт')
+        constant_text += f'{actuator.name} закрыт.\n'
+        reply_message.edit_text(constant_text)
 
     reply_keyboard = __get_keyboard()
     keyboard_markup = ReplyKeyboardMarkup(reply_keyboard, one_time_keyboard=True)
-    update.message.reply_text(__get_status_text(), reply_markup=keyboard_markup)
+    original_message.reply_text(__get_status_text(), reply_markup=keyboard_markup)
     return states.MAIN_STATE
 
 
