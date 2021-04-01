@@ -37,9 +37,9 @@ def open_both_windows_handler(update: Update, context: CallbackContext) -> int:
     for actuator in actuators:
         text = f'{actuator.name} открывается. Подождите {actuator.open_close_timeout_in_sec} секунд.\n'
         if reply_message:
-            reply_message = reply_message.edit_text(constant_text + text)
+            reply_message = reply_message.edit_text(constant_text + text, disable_notification=True)
         else:
-            reply_message = original_message.reply_text(constant_text + text, reply_to_message_id=original_message.message_id)
+            reply_message = original_message.reply_text(constant_text + text, reply_to_message_id=original_message.message_id, disable_notification=True)
 
         actuator.open()
         constant_text += f'{actuator.name} открыт.\n'
@@ -61,9 +61,9 @@ def close_both_windows_handler(update: Update, context: CallbackContext) -> int:
     for actuator in actuators:
         text = f'{actuator.name} закрывается. Подождите {actuator.open_close_timeout_in_sec} секунд.'
         if reply_message:
-            reply_message = reply_message.edit_text(constant_text + text)
+            reply_message = reply_message.edit_text(constant_text + text, disable_notification=True)
         else:
-            reply_message = original_message.reply_text(constant_text + text, reply_to_message_id=original_message.message_id)
+            reply_message = original_message.reply_text(constant_text + text, reply_to_message_id=original_message.message_id, disable_notification=True)
 
         actuator.close()
         constant_text += f'{actuator.name} закрыт.\n'
@@ -84,7 +84,7 @@ def open_device_handler(update: Update, context: CallbackContext) -> int:
     if hasattr(device, 'open_close_timeout_in_sec'):
         text += f' Подождите {device.open_close_timeout_in_sec} секунд.'
     message = update.message
-    message = message.reply_text(text, reply_to_message_id=message.message_id)
+    message = message.reply_text(text, reply_to_message_id=message.message_id, disable_notification=True)
 
     device.open()
 
@@ -107,7 +107,7 @@ def close_device_handler(update: Update, context: CallbackContext) -> int:
         text += f' Подождите {device.open_close_timeout_in_sec} секунд.'
 
     message = update.message
-    message = message.reply_text(text, reply_to_message_id=message.message_id)
+    message = message.reply_text(text, reply_to_message_id=message.message_id, disable_notification=True)
 
     device.close()
 
