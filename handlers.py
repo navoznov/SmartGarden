@@ -36,7 +36,7 @@ def open_both_windows_handler(update: Update, context: CallbackContext) -> int:
     for actuator in actuators:
         text = f'{actuator.name} открывается. Подождите {actuator.open_close_timeout_in_sec} секунд.\n'
         if reply_message:
-            reply_message = reply_message.edit_text(constant_text + text, reply_to_message_id=original_message.message_id)
+            reply_message = reply_message.edit_text(constant_text + text)
         else:
             reply_message = original_message.reply_text(constant_text + text, reply_to_message_id=original_message.message_id)
 
@@ -59,7 +59,7 @@ def close_both_windows_handler(update: Update, context: CallbackContext) -> int:
     for actuator in actuators:
         text = f'{actuator.name} закрывается. Подождите {actuator.open_close_timeout_in_sec} секунд.'
         if reply_message:
-            reply_message = reply_message.edit_text(constant_text + text, reply_to_message_id=original_message.message_id)
+            reply_message = reply_message.edit_text(constant_text + text)
         else:
             reply_message = original_message.reply_text(constant_text + text, reply_to_message_id=original_message.message_id)
 
