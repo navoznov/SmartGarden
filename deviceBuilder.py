@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 from hardware.temperatureSensor import TemperatureSensor
+from hardware.tempreatureMqttSensor import TemperatureMqttSensor
 from hardware.valve import Valve
 from hardware.relay import Relay
 from hardware.sensor import Sensor
@@ -18,10 +19,13 @@ def build_device(device_config):
     pins = device_config.get("pins", None)
 
     mqtt_topic = device_config.get("mqttTopic", None)
+    mqtt_server = device_config.get("mqttServer", None)
     state = device_config.get("state", None)
 
     if device_type == deviceTypes.TEMPERATURE:
         return TemperatureSensor(id, pin, mqtt_topic, name, description)
+    elif device_type == deviceTypes.TEMPERATURE_MQTT:
+        return TemperatureMqttSensor(id, mqtt_topic, mqtt_server, name, description)
     elif device_type == deviceTypes.VALVE:
         return Valve(id, pin, state, mqtt_topic, name, description)
     elif device_type == deviceTypes.RELAY:

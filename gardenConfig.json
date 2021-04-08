@@ -1,11 +1,11 @@
 {
     "devices": [
         {
-            "id": "temperature1",
-            "type": "temperature",
+            "id": "temperatureMqtt1",
+            "type": "temperature_mqtt",
             "name": "Temperature at the top",
             "pin": "0",
-            "mqttTopic": "garden/gardenhouse/inside/temperature/top"
+            "mqttTopic": "navoznov/outside/temperature"
         },
         {
             "id": "temperature2",

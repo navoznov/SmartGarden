@@ -1,5 +1,7 @@
 # температурный датчик
 TEMPERATURE = "temperature"
+# температурный датчик, получающий данные из MQTT
+TEMPERATURE_MQTT = "temperature_mqtt"
 # клапан
 VALVE = "valve"
 # реле
