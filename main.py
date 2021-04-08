@@ -1,6 +1,9 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+import globalOptions
+globalOptions.is_fake = False
+
 import logging
 from telegram.ext import (
     Updater,

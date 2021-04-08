@@ -10,12 +10,16 @@ from telegram.ext import (
     ConversationHandler
 )
 
-import hardware.gpioHelper as gpioHelper
+import globalOptions
+if globalOptions.is_fake:
+    import hardware.fakeGpioHelper as gpioHelper
+else:
+    import hardware.gpioHelper as gpioHelper
+
 import states, buttonTitles, hardware.deviceTypes, hardware.switchStates
 from hardware.device import Device
 from options import options, Options
 import garden
-
 
 def start_state_handler(update: Update, context: CallbackContext) -> int:
     reply_keyboard = __get_keyboard()

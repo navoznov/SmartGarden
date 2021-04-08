@@ -4,7 +4,12 @@ from hardware.device import Device
 import hardware.deviceTypes as deviceTypes
 import hardware.switchStates as switchStates
 from typing import List
-import hardware.gpioHelper as gpioHelper
+import globalOptions
+
+if globalOptions.is_fake:
+    import hardware.fakeGpioHelper as gpioHelper
+else:
+    import hardware.gpioHelper as gpioHelper
 
 class LinearActuator(Device):
     """линейный актуатор"""
