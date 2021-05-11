@@ -6,6 +6,7 @@ class MqttSensor(Device):
         self.mqtt_topic = mqtt_topic
         self.__mqtt_server = mqtt_server
         self.__sensor_value = None
+        # TODO: использовать один инстанс mqtt-клиента для всех девайсов (и вообще для всех нужд)
         self.__mqtt_client = mqtt.Client(f'mqtt_{id}')
 
         try:
