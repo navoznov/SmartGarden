@@ -12,4 +12,4 @@ class TemperatureMqttSensor(MqttSensor):
 
     def get_status(self) -> str:
         value = self.get_value()
-        return f'{self.name}: {value}'
+        return f'{self.name}: {str(value) if value else "----"}'
