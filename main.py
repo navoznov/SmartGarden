@@ -37,6 +37,7 @@ conversation_handler = ConversationHandler(
         states.MAIN_STATE: [
             MessageHandler(Filters.text(buttonTitles.OPEN_BOTH_WINDOW_BUTTON), handlers.open_both_windows_handler),
             MessageHandler(Filters.text(buttonTitles.CLOSE_BOTH_WINDOW_BUTTON), handlers.close_both_windows_handler),
+            MessageHandler(Filters.text(buttonTitles.VIEW_STATUS_BUTTON), handlers.view_status_handler),
             MessageHandler(Filters.regex('Открыть .+') | Filters.regex('Включить .+'), handlers.open_device_handler),
             MessageHandler(Filters.regex('Закрыть .+') | Filters.regex('Выключить .+'), handlers.close_device_handler),
         ],

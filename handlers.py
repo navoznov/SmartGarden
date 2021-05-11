@@ -130,6 +130,13 @@ def debug_set_pin_value(update: Update, context: CallbackContext) -> int:
     gpioHelper.set_pin_value(pinStr, valueStr)
 
 
+def view_status_handler(update: Update, context: CallbackContext) -> int:
+    reply_keyboard = __get_keyboard()
+    keyboard_markup = ReplyKeyboardMarkup(reply_keyboard, one_time_keyboard=True)
+    update.message.reply_text(__get_status_text(), reply_markup=keyboard_markup)
+    return states.MAIN_STATE
+
+
 def __get_status_text() -> str:
     devices = garden.get_devices()
     if not devices:
@@ -169,4 +176,5 @@ def __get_keyboard() -> List[List[str]]:
     valve_buttons = __get_device_type_buttons(hardware.deviceTypes.RELAY)
     buttons.append(valve_buttons)
 
+    buttons.append([buttonTitles.VIEW_STATUS_BUTTON])
     return buttons
