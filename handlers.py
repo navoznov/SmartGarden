@@ -128,6 +128,7 @@ def debug_set_pin_value(update: Update, context: CallbackContext) -> int:
     text = message.text
     _, pinStr, valueStr = text.split(' ')
     gpioHelper.set_pin_value(pinStr, valueStr)
+    return states.MAIN_STATE
 
 
 def view_status_handler(update: Update, context: CallbackContext) -> int:
