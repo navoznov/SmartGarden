@@ -13,14 +13,12 @@ class MqttSensor(Device):
             self.on_message = __handle_on_message
         except:
             print(f'Ошибка подключения к серверу MQTT: {mqtt_server}')
-            pass
 
         super().__init__(id, device_type, name, description)
 
 
     def __handle_on_message(self, client, userdata, message):
         self.__sensor_value = message
-        pass
 
     def get_value(self):
         return self.__sensor_value
