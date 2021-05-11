@@ -3,16 +3,18 @@ import paho.mqtt.client as mqtt
 
 class MqttSensor(Device):
     def __init__(self, id, device_type, mqtt_topic, mqtt_server, name, description):
-        # self.mqtt_topic = mqtt_topic
-        # self.__mqtt_server = mqtt_server
+        self.mqtt_topic = mqtt_topic
+        self.__mqtt_server = mqtt_server
         self.__sensor_value = None
         self.__mqtt_client = mqtt.Client(f'mqtt_{id}')
+
         try:
             self.__mqtt_client.connect(mqtt_server)
-            self.__mqtt_client.subscribe(mqtt_topic)
-            self.on_message = __handle_on_message
         except:
-            print(f'Ошибка подключения к серверу MQTT: {mqtt_server}')
+            print(f'Ошибка подключения к серверу MQTT: {self.mqtt_server}')
+
+        self.__mqtt_client.subscribe(self.mqtt_topic)
+        self.on_message = self.__handle_on_message
 
         super().__init__(id, device_type, name, description)
 
