@@ -2,26 +2,14 @@
 # -*- coding: utf-8 -*-
 
 from options import options, Options
+from config import config
 
 import globalOptions
 globalOptions.is_fake = options.is_fake_gpio_mode
 
-import logging
-from telegram.ext import (
-    Updater,
-    CommandHandler,
-    MessageHandler,
-    Filters,
-    ConversationHandler,
-    CallbackContext,
-    InlineQueryHandler
-)
-import deviceBuilder
-import garden
-from config import config
-import json
-import buttonTitles
-import states
+import logging, json
+from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, ConversationHandler, CallbackContext, InlineQueryHandler
+import states, buttonTitles, deviceBuilder, garden
 import handlers
 
 console_logging_handler = logging.StreamHandler()
@@ -49,17 +37,3 @@ updater.dispatcher.add_handler(conversation_handler)
 updater.dispatcher.add_handler(CommandHandler('set', handlers.debug_set_pin_value))
 updater.start_polling()
 updater.idle()
-
-
-# ---------------------------------------------------------------------
-# # получаем настройки устройств
-# device_configs = config.get("devices", [])
-
-# # составляем список устройств
-# device_builder = DeviceBuilder()
-# # REFACTORING: переписать цилк в одну строку
-# # devices = [build_device(x) for x in device_configs]
-# devices = []
-# for device_config in device_configs:
-#     device = device_builder.build_device(device_config)
-#     devices.append(device)
