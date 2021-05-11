@@ -132,7 +132,6 @@ def debug_set_pin_value(update: Update, context: CallbackContext) -> int:
 
 
 def view_status_handler(update: Update, context: CallbackContext) -> int:
-    reply_keyboard = __get_keyboard()
     keyboard_markup = ReplyKeyboardMarkup(reply_keyboard, one_time_keyboard=True)
     update.message.reply_text(__get_status_text(), reply_markup=keyboard_markup)
     return states.MAIN_STATE
@@ -157,6 +156,8 @@ def __get_keyboard() -> List[List[str]]:
         return [__get_button_text_for_device(d) for d in devices]
 
     buttons = []
+    # кнопка статус
+    buttons.append([buttonTitles.VIEW_STATUS_BUTTON])
 
     # окна
     actuator_buttons = __get_device_type_buttons(hardware.deviceTypes.LINEAR_ACTUATOR)
@@ -177,5 +178,4 @@ def __get_keyboard() -> List[List[str]]:
     valve_buttons = __get_device_type_buttons(hardware.deviceTypes.RELAY)
     buttons.append(valve_buttons)
 
-    buttons.append([buttonTitles.VIEW_STATUS_BUTTON])
     return buttons
