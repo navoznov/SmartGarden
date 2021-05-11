@@ -1,8 +1,10 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+from options import options, Options
+
 import globalOptions
-globalOptions.is_fake = False
+globalOptions.is_fake = options.is_fake_gpio_mode
 
 import logging
 from telegram.ext import (
@@ -16,7 +18,6 @@ from telegram.ext import (
 )
 import deviceBuilder
 import garden
-from options import options, Options
 from config import config
 import json
 import buttonTitles
