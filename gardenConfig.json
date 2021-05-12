@@ -1,18 +1,19 @@
 {
     "devices": [
         {
-            "id": "temperatureMqtt1",
-            "type": "temperature_mqtt",
+            "id": "temperature1",
+            "type": "temperature",
             "name": "Temperature at the top",
             "pin": "0",
             "mqttTopic": "navoznov/outside/temperature"
         },
         {
-            "id": "temperature2",
-            "type": "temperature",
-            "name": "Temperature from the bottom",
+            "id": "temperatureMqtt2",
+            "type": "temperature_mqtt",
+            "name": "Temperature at the bottom",
             "pin": "1",
-            "mqttTopic": "garden/gardenhouse/inside/temperature/bottom"
+            "mqttServer": "broker.hivemq.com",
+            "mqttTopic": "navoznov/gardenhouse/bottom/temperature"
         },
         {
             "id": "valve1",
