@@ -15,7 +15,8 @@ def __get_devices() -> List[Device]:
     devices = []
     for device_config in device_configs:
         device = deviceBuilder.build_device(device_config)
-        devices.append(device)
+        if device:
+            devices.append(device)
     return devices
 
 

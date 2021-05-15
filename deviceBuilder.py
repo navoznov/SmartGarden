@@ -11,6 +11,10 @@ import hardware.deviceTypes as deviceTypes
 
 
 def build_device(device_config):
+    enabled = device_config.get("enabled", 1)
+    if not enabled:
+        return None
+
     id = device_config.get("id", None)
     device_type = device_config.get("type", None)
     name = device_config.get("name", None)
