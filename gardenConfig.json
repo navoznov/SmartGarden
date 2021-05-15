@@ -56,6 +56,7 @@
             "type": "linear_actuator",
             "name": "Front window",
             "pins": ["7", "1"],
+            "open_close_timeout_in_sec": 20,
             "mqttTopic": "gardenhouse/actuators/front"
         },
         {
@@ -64,6 +65,7 @@
             "type": "linear_actuator",
             "name": "Back window",
             "pins": ["25", "8"],
+            "open_close_timeout_in_sec": 20,
             "mqttTopic": "gardenhouse/actuators/back"
         }
     ]
