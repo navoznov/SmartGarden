@@ -57,13 +57,18 @@ class LinearActuator(Device):
 
         self.state = switchStates.WORKING
 
+        print(f'{self.name} ставим пины')
         gpioHelper.set_pin_value(self.pin1, 0)
         gpioHelper.set_pin_value(self.pin2, 1)
 
+        print(f'{self.name} открывается ... ждем...')
         time.sleep(self.open_close_timeout_in_sec)
 
+        print(f'{self.name} снова ставим пины')
         gpioHelper.set_pin_value(self.pin1, 0)
         gpioHelper.set_pin_value(self.pin2, 0)
+
+        print(f'{self.name} закончил откываться')
 
         self.state = switchStates.OPENED
         if callback != None:
