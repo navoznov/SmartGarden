@@ -61,7 +61,7 @@ class LinearActuator(Device):
         gpioHelper.set_pin_value(self.pin1, 0)
         gpioHelper.set_pin_value(self.pin2, 1)
 
-        print(f'{self.name} открывается ... ждем...')
+        print(f'{self.name} открывается ... ждем.. {self.open_close_timeout_in_sec} секунд.')
         time.sleep(self.open_close_timeout_in_sec)
 
         print(f'{self.name} снова ставим пины')
